@@ -2,7 +2,14 @@ import pandas as pd
 import pandas_datareader.data as web
 import yfinance as yf
 import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import os
 
+# set proxy
+os.environ['http_proxy'] = "http://127.0.0.1:10809"
+os.environ['https_proxy'] = "http://127.0.0.1:10809"
 
 def load_stock(start_date, end_date, output_file):
     try:
@@ -49,7 +56,7 @@ knn_clf = KNeighborsClassifier(n_neighbors=95)
 knn_clf.fit(X_train, y_train)
 print(knn_clf.score(X_train, y_train))
 print(knn_clf.score(X_test, y_test))
-
+knn_reg = KNeighborsRegressor()
 df['Predict_Signal'] = knn_reg.predict(X)
 df['Return'] = np.log(df['Close']/df['Close'].shift(1))
 df.head()

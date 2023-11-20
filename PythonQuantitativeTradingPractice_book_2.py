@@ -5,6 +5,12 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+import os
+
+# set proxy
+os.environ['http_proxy'] = "http://127.0.0.1:10809"
+os.environ['https_proxy'] = "http://127.0.0.1:10809"
+
 
 ticker = '601318.ss'
 start_date = '2020-01-01'
