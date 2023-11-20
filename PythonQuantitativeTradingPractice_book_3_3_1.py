@@ -3,6 +3,7 @@ import pandas_datareader.data as web
 import yfinance as yf
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import KNeighborsRegressor
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 import os
