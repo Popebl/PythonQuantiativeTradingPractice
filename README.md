@@ -14,3 +14,12 @@ File "\Python\Python38\lib\site-packages\pandas_datareader\data.py", line 80, in
     data = j["context"]["dispatcher"]["stores"]["HistoricalPriceStore"]
 TypeError: string indices must be integers
 ### 修正个别源码错误
+
+
+
+## Python 环境
+
+Python 依赖包列表在 env/requirement/ 下面。例如运行3.3.1代码，可以进入目录，执行如下命令：
+
+
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r requirements_3_3_1.txt

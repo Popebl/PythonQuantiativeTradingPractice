@@ -1,7 +1,9 @@
 import pandas as pd
-import pandas_datareader.data as web
 import yfinance as yf
 import numpy as np
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
 
 
 def load_stock(start_date, end_date, output_file):
@@ -50,9 +52,13 @@ knn_clf.fit(X_train, y_train)
 print(knn_clf.score(X_train, y_train))
 print(knn_clf.score(X_test, y_test))
 
-df['Predict_Signal'] = knn_reg.predict(X)
+df['Predict_Signal'] = knn_clf.predict(X)
 df['Return'] = np.log(df['Close']/df['Close'].shift(1))
 df.head()
+
+def cum_return(df, split_value):
+    cum_return = df[split_value:]['Return'].cumsum()*100
+    return cum_return
 
 def strategy_return(df, split_value):
     df['Strategy_Return'] = df['Return']*df['Predict_Signal'].shift(1)
