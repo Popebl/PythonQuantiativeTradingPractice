@@ -6,15 +6,24 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
+from datetime import datetime
 
 # set proxy
 os.environ['http_proxy'] = "http://127.0.0.1:10809"
 os.environ['https_proxy'] = "http://127.0.0.1:10809"
 
 
-ticker = '601318.ss'
+#ticker = '601318.ss'
+#ticker = '600667.ss'
+#ticker = '600373.ss'
+#ticker = '002185.sz'
+#ticker = '300429.sz'
+ticker = '600211.ss'
+#ticker = '000656.sz'
 start_date = '2020-01-01'
-end_date = '2020-03-18'
+#end_date = '2020-03-18'
+end_date = datetime.now().date()
+
 zgpa = yf.download(ticker, start=start_date, end=end_date)
 zgpa_signal = pd.DataFrame(index = zgpa.index)
 zgpa_signal['price'] = zgpa['Adj Close']
