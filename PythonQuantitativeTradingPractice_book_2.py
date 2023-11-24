@@ -18,7 +18,10 @@ os.environ['https_proxy'] = "http://127.0.0.1:10809"
 #ticker = '600373.ss'
 #ticker = '002185.sz'
 #ticker = '300429.sz'
-ticker = '600211.ss'
+#ticker = '603598.ss'
+#ticker = '002185.sz'
+#ticker = '002336.sz'
+ticker = '002369.sz'
 #ticker = '000656.sz'
 start_date = '2020-01-01'
 #end_date = '2020-03-18'
@@ -146,7 +149,7 @@ positions['stock'] = 100 * turtle['orders'].cumsum()
 portfolio = positions.multiply(zgpa['Adj Close'], axis=0)
 portfolio['holding_values'] = (positions.multiply(zgpa['Adj Close'], axis=0))
 pos_diff = positions.diff()
-portfolio['cash'] = initial_capital - (pos_diff.multiply(zgpa['Adj Close'], axis=0)).cumsum()
+portfolio['cash'] = initial_cash - (pos_diff.multiply(zgpa['Adj Close'], axis=0)).cumsum()
 portfolio['total'] = portfolio['cash'] + portfolio['holding_values']
 plt.figure(figsize=(10,5))
 plt.plot(portfolio['total'])
